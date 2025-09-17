@@ -95,3 +95,14 @@ a{
 .shower_info {
     white-space: pre-wrap; /* зберігає переноси рядків і відступи */
 }
+.preview_images{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.preview_images img{
+    width: 80%;
+}
+.links_section{
+    margin-bottom: 3vh;
+}

@@ -56,7 +56,7 @@
 --Адміністратор контролює загальну якість контенту.
                 `,
                 structure_of_document: {
-                    info: "Структура документа ЛР1 складається з кількох частин:",
+                    info: "Структура документа ЛР1 складається з кількох частин: HTML, CSS I JS",
                     sub: {
                         html: `<!DOCTYPE html>
 <html lang="uk">
@@ -205,7 +205,8 @@
     </footer>
 
 </body>
-</html>`,
+</html>` 
+,
                         css: "У цій лабораторній не передбачена робота з css-файлами",
                         js: "У цій лабораторній не передбачена робота з js-файлами"
                     }
@@ -254,6 +255,7 @@
         const leftSection = mainSection.querySelector(".left_section");
         const showerInfo = mainSection.querySelector(".shower_info");
         const rightSection = mainSection.querySelector(".right_section");
+        const previewImages = document.querySelector(".preview_images");
         
         
        
@@ -281,6 +283,7 @@
     leftSection.querySelectorAll(".info_button").forEach(infoBtn => {
       infoBtn.addEventListener("click", () => {
         const key = infoBtn.getAttribute("data-info");
+        previewImages.innerHTML = "";
 
         if (key === "structure_of_document") {
           showerInfo.innerHTML = labData[labId][key].info;
@@ -304,8 +307,18 @@
             // Вішаємо події на підкнопки
             leftSection.querySelectorAll(".sub_button").forEach(subBtn => {
               subBtn.addEventListener("click", () => {
+                previewImages.innerHTML = "";
                 const subKey = subBtn.getAttribute("data-sub");
                 showerInfo.textContent = labData[labId][key].sub[subKey];
+                if (subKey === "html") {
+                     previewImages.innerHTML = `Вигляд списків:
+<img src="../IP-31_appRECORD-DanyliukArtem-FIOT-2025/img/list_example.png" alt="list_example_photo">
+Вигляд таблиці:
+<img src="../IP-31_appRECORD-DanyliukArtem-FIOT-2025/img/table_example.png" alt="table_example_photo">
+Вигляд форми:
+<img src="../IP-31_appRECORD-DanyliukArtem-FIOT-2025/img/form_example.png" alt="form_example_photo">`;
+                }
+               
               });
             });
           }
@@ -322,6 +335,7 @@
           window.open(labData[labId][key], "_blank");
           return;
         }
+
     });
     });
   });
